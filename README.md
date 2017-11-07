@@ -1,6 +1,6 @@
 ### 我的博客
 
-地址：[http://adents.org](http://adents.org)
+地址：[http://adents.cc](http://adents.cc)
 
 ### 安装说明
 
