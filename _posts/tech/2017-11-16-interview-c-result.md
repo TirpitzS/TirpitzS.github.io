@@ -80,21 +80,7 @@ int main(int argc, char* argv[]) {
 }
 ```
 5、分解成质因数(如435234=251 x 17 x 17 x 3 x 2，据说是华为笔试题)
-```
-void prim(int m, int n) {
-	if(m>n) {
-		while(m%n != 0) n++;
-		m /= n;
-		prim(m, n);
-		printf("%d*", n);
-	}
-}
-int main(int argc, char* argv[]) {
-	int n = 435234;
-	printf("%d=", n);
-	prim(n, 2);
-}
-```
+
 6、寻找迷宫的一条出路，o：通路； X：障碍。（大家经常谈到的一个小算法题）
 ```
 #define MAX_SIZE  8
