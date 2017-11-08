@@ -10,7 +10,7 @@ description: 面试算法题
 ##	面试算法题（答案）
 
 1、将一整数逆序后放入一数组中（要求递归实现）
-```c/c++
+```
 void convert(int *result, int n) {
 	if(n>=10)
 		convert(result+1, n/10);
@@ -26,7 +26,7 @@ int main(int argc, char* argv[]) {
 ```
 
 2、求高于平均分的学生学号及成绩（学号和成绩人工输入）
-```c/c++
+```
 double find(int total, int n) {
 	int number, score,  average;
 	scanf("%d", &number);
