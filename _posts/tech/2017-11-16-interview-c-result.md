@@ -9,6 +9,7 @@ description: 面试算法题
 
 
 1、将一整数逆序后放入一数组中（要求递归实现）
+```
 void convert(int *result, int n) {
 	if(n>=10)
 		convert(result+1, n/10);
@@ -21,7 +22,9 @@ int main(int argc, char* argv[]) {
 	for(int i=0; i<9; i++)
 		printf("%d", result[i]);
 }
+```
 2、求高于平均分的学生学号及成绩（学号和成绩人工输入）
+```
 double find(int total, int n) {
 	int number, score,  average;
 	scanf("%d", &number);
@@ -39,7 +42,9 @@ double find(int total, int n) {
 int main(int argc, char* argv[]) {
 	find(0, 0);
 }
+```
 3、递归实现回文判断（如：abcdedbca就是回文，判断一个面试者对递归理解的简单程序）
+```
 int find(char *str, int n) {
 	if(n<=1)	return 1;
 	else if(str[0]==str[n-1])	return find(str+1, n-2);
@@ -49,7 +54,9 @@ int main(int argc, char* argv[]) {
 	char *str = "abcdedcba";
 	printf("%s: %s\n", str, find(str, strlen(str)) ? "Yes" : "No");
 }
+```
 4、组合问题（从M个不同字符中任取N个字符的所有组合）
+```
 void find(char *source, char *result, int n) {
 	if(n==1) {
 		while(*source)
@@ -71,7 +78,9 @@ int main(int argc, char* argv[]) {
 	if(n>0 && strlen(source)>0 && n<=strlen(source))
 		find(source, result, 3);
 }
+```
 5、分解成质因数(如435234=251*17*17*3*2，据说是华为笔试题)
+```
 void prim(int m, int n) {
 	if(m>n) {
 		while(m%n != 0) n++;
@@ -85,7 +94,9 @@ int main(int argc, char* argv[]) {
 	printf("%d=", n);
 	prim(n, 2);
 }
+```
 6、寻找迷宫的一条出路，o：通路； X：障碍。（大家经常谈到的一个小算法题）
+```
 #define MAX_SIZE  8
 int H[4] = {0, 1, 0, -1}; 
 int V[4] = {-1, 0, 1, 0};           
@@ -112,7 +123,9 @@ if(X >= 0 && Y >= 0 && Y < MAX_SIZE && X < MAX_SIZE && 'o' == Maze[X][Y]) {
 int main(int argc, char* argv[]) {
     FindPath(1,0);
 }
+```
 7、随机分配座位，共50个学生，使学号相邻的同学座位不能相邻(早些时候用C#写的，没有用C改写）。
+```
 static void Main(string[] args)
 {
 	int Tmp = 0, Count = 50;			
@@ -131,7 +144,9 @@ Students[Tmp] = true;
 	    System.Console.Write(Student + " ");
 	System.Console.Read();
 }
+```
 8、求网格中的黑点分布。现有6*7的网格，在某些格子中有黑点，已知各行与各列中有黑点的点数之和，请在这张网格中画出黑点的位置。（这是一网友提出的题目，说是他笔试时遇到算法题）
+```
 #define ROWS 6
 #define COLS 7
 int iPointsR[ROWS] = {2, 0, 4, 3, 4, 0};           // 各行黑点数和的情况
@@ -170,7 +185,9 @@ int main(int argc, char* argv[]) {
     if(!Set(0))
         printf("Failure!"); 
 }
+```
 9、有4种面值的邮票很多枚，这4种邮票面值分别1, 4, 12, 21，现从多张中最多任取5张进行组合，求取出这些邮票的最大连续组合值。
+```
 #define N 5
 #define M 5
 int k, Found, Flag[N];
@@ -196,7 +213,9 @@ int Combine(int n, int Value) {
 int main(int argc, char* argv[]) {
 	for(int i=1; Combine(N, i); i++, Found=0);
 }
+```
 10、大整数数相乘的问题。
+```
 void Multiple(char A[], char B[], char C[]) {
     int TMP, In=0, LenA=-1, LenB=-1;
     while(A[++LenA] != '\0');
@@ -227,7 +246,9 @@ char C[sizeof(A) + sizeof(B) - 1];
     for(int i=0; C[i] != '\0'; i++)
         printf("%c", C[i]);
 }
+```
 11、求最大连续递增数字串（如“ads3sl456789DF3456ld345AA”中的“456789”）
+```
 int GetSubString(char *strSource, char *strResult) {
     int iTmp=0, iHead=0, iMax=0;
     for(int Index=0, iLen=0; strSource[Index]; Index++) {
@@ -255,7 +276,9 @@ int main(int argc, char* argv[]) {
 printf("Len=%d, strResult=%s \nstrSource=%s\n", 
 GetSubString(strSource, strResult), strResult, strSource);
 }
+```
 12、四个工人，四个任务，每个人做不同的任务需要的时间不同，求任务分配的最优方案。（2005年5月29日全国计算机软件资格水平考试——软件设计师的算法题）。
+```
 #include "stdafx.h"
 #define N 4
 int	Cost[N][N] = { {2, 12, 5, 32},		// 行号：任务序号，列号：工人序号
@@ -285,7 +308,9 @@ int main(int argc, char* argv[]) {
 	for(int i=0; i<N; i++)		/* 输出最佳方案 */
 		printf("\t任务%d由工人%d来做：%d\n", i, TempTask[i], Cost[i][TempTask[i]]);
 }
+```
 13、八皇后问题，输出了所有情况，不过有些结果只是旋转了90度而已。（回溯算法的典型例题，是数据结构书上算法的具体实现，大家都亲自动手写过这个程序吗？）
+```
 #define N 8
 int Board[N][N];
 int Valid(int i, int j) {		// 判断下棋位置是否有效
@@ -318,7 +343,9 @@ void Trial(int i, int n) {		// 寻找合适下棋位置
 int main(int argc, char* argv[]) {
 	Trial(0, N);
 }
+```
 14、实现strstr功能，即在父串中寻找子串首次出现的位置。（笔试中常让面试者实现标准库中的一些函数）
+```
 char * strstring(char *ParentString, char *SubString) {
 	char *pSubString, *pPareString;
 	for(char *pTmp=ParentString; *pTmp; pTmp++) {
@@ -337,7 +364,9 @@ int main(int argc, char* argv[]) {
 	char *SubString = "birthday";
 	printf("%s",strstring(ParentString, SubString));
 }
+```
 15、现在小明一家过一座桥，过桥的时候是黑夜，所以必须有灯。现在小明过桥要1分，小明的弟弟要3分，小明的爸爸要6分，小明的妈妈要8分，小明的爷爷要12分。每次此桥最多可过两人，而过桥的速度依过桥最慢者而定，而且灯在点燃后30分就会熄灭。问小明一家如何过桥时间最短？（原本是个小小智力题，据说是外企的面试题，在这里用程序来求解）
+```
 #include "stdafx.h"
 #define N    5
 #define SIZE 64
@@ -394,7 +423,9 @@ Find(N, 0, 1);    				// 查找最佳方案
         printf("  %d-%d  %d", Scheme[i], Scheme[i+1], Scheme[i+2]);
     printf("\b\b  ");
 }
+```
 16、2005年11月金山笔试题。编码完成下面的处理函数。函数将字符串中的字符'*'移到串的前部分，前面的非'*'字符后移，但不能改变非'*'字符的先后顺序，函数返回串中字符'*'的数量。如原始串为：ab**cd**e*12，处理后为*****abcde12，函数并返回值为5。（要求使用尽量少的时间和辅助空间）
+```
 int change(char *str) {					/* 这个算法并不高效，从后向前搜索效率要高些 */
 	int count = 0;					/* 记录串中字符'*'的个数 */
 	for(int i=0, j=0; str[i]; i++) {		/* 重串首开始遍历 */
@@ -426,7 +457,9 @@ int change(char *str) {
 	}
 	return i+1;
 }
+```
 17、2005年11月15日华为软件研发笔试题。实现一单链表的逆转。
+```
 #include "stdafx.h"
 typedef char eleType;		// 定义链表中的数据类型
 typedef struct listnode	 {	// 定义单链表结构
@@ -460,7 +493,9 @@ int main(int argc, char* argv[]) {
 	head = reverse(head, NULL);
 	print(head);
 }
+```
 18、编码实现字符串转整型的函数（实现函数atoi的功能），据说是神州数码笔试题。如将字符串 ”+123”?123, ”-0123”?-123, “123CS45”?123, “123.45CS”?123, “CS123.45”?0
+```
 #include "stdafx.h"
 int str2int(const char *str) {				// 字符串转整型函数
 	int i=0, sign=1, value = 0;
@@ -478,7 +513,9 @@ int main(int argc, char *argv[]) {
 	int  val  = str2int(str);
 	printf("str=%s\tval=%d\n", str, val);
 }
+```
 19、歌德巴赫猜想。任何一个偶数都可以分解为两个素数之和。（其实这是个C二级考试的模拟试题）
+```
 #include "stdafx.h"
 #include "math.h"
 int main(int argc, char* argv[]) {
@@ -492,7 +529,9 @@ int main(int argc, char* argv[]) {
 		printf("%d=%d+%d\n", Even, Prime1, Prime2);
 	}
 }
+```
 20、快速排序（东软喜欢考类似的算法填空题，又如堆排序的算法等）
+```
 #include "stdafx.h"
 #define N 10
 int part(int list[], int low, int high) {		// 一趟排序，返回分割点位置
@@ -524,7 +563,9 @@ int main(int argc, char* argv[]) {
 	QSort(list, 0, N-1);					// 快速排序
 	show(list, N);						// 输出排序后序列
 }
+```
 21、2005年11月23日慧通笔试题：写一函数判断某个整数是否为回文数，如12321为回文数。可以用判断入栈和出栈是否相同来实现（略微复杂些），这里是将整数逆序后形成另一整数，判断两个整数是否相等来实现的。
+```
 #include "stdafx.h"
 int IsEchoNum(int num) {
 	int tmp = 0;
@@ -536,7 +577,9 @@ int main(int argc, char* argv[]) {
 	int num = 12321;
 	printf("%d  %d\n", num, IsEchoNum(num));
 }
+```
 22、删除字符串中的数字并压缩字符串（神州数码以前笔试题），如字符串”abc123de4fg56”处理后变为”abcdefg”。注意空间和效率。（下面的算法只需要一次遍历，不需要开辟新空间，时间复杂度为O(N)）
+```
 #include "stdafx.h"
 void delNum(char *str) {
 	int i, j=0;
@@ -555,7 +598,9 @@ int main(int argc, char* argv[]) {
 	delNum(str);
 	printf("%s\n", str);
 }
+```
 23、求两个串中的第一个最长子串（神州数码以前试题）。如"abractyeyt","dgdsaeactyey"的最大子串为"actyet"。
+```
 #include "stdafx.h"
 char *MaxSubString(char *str1, char *str2) {
 	int i, j, k, index, max=0;
@@ -576,7 +621,9 @@ int main(int argc, char* argv[]) {
 	char *strResult = MaxSubString(str1, str2);
 	printf("str1=%s\nstr2=%s\nMaxSubString=%s\n", str1, str2, strResult);
 }
+```
 24、不开辟用于交换数据的临时空间，如何完成字符串的逆序(在技术一轮面试中，有些面试官会这样问)
+```
 #include "stdafx.h"
 void change(char *str) {
 	for(int i=0,j=strlen(str)-1; i<j; i++, j--){
@@ -590,7 +637,9 @@ int main(int argc, char* argv[]) {
 	printf("strResult=%s\n", str);
 	return getchar();
 }
+```
 25、删除串中指定的字符（做此题时，千万不要开辟新空间，否则面试官可能认为你不适合做嵌入式开发）
+```
 #include "stdafx.h"
 void delChar(char *str, char c) {
 	int i, j=0;
@@ -605,7 +654,9 @@ int main(int argc, char* argv[]) {
 	delChar(str, 'c');
 	printf("%s\n", str);
 }
+```
 26、判断单链表中是否存在环（网上说的笔试题）
+```
 #include "stdafx.h"
 typedef char eleType;				// 定义链表中的数据类型
 typedef struct listnode	 {			// 定义单链表结构
@@ -645,3 +696,4 @@ int main(int argc, char* argv[]) {
 	addCircle(head, 8);			// 注释掉此行，连表就没有环了
 	printf("%d\n", isCircle(head));
 }
+```
