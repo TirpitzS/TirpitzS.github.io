@@ -116,3 +116,111 @@ f = np.array([[1,2,3],[4,5,6]], dtype=complex)
 ```
 
 #### 运算
+
+1、算术运算
+```python
+>>>a = np.arange(4)
+>>>a
+array([0,1,2,3])
+>>>a+4      ##元素+4
+array([4,5,6,7])
+>>>a * 2    ##元素*2
+array([0,2,4,6])
+```
+note:+ - * /均为元素运算
+
+2、矩阵积
+```
+np.dot(A,B) or A.dot(B) ## 注意A, B有顺序
+```
+
+3、通用函数
+a、log
+b、sin
+c、sqrt
+更多请翻阅numpy手册
+
+4、聚合函数（统计函数）
+```
+a = np.array([3.3, 4.5, 1.2, 5.7, 0.3])
+a.sum()
+a.max()
+a.mean()
+a.std()
+```
+#### 索引机制、切片和迭代方法
+
+1、数组索引机制指的是用方括号[]加序号的形式应用单个数组元素
+```python
+>>>A = np.arange(10,19).reshape((3,3))
+>>>A
+array([[10,11,12],[13,14,15],[16,17,118]])
+>>>A[1,2]          ## 第二个array中的第3个元素
+```
+
+2、切片操作
+```
+a = np.arange(10,16)
+a[x:y:z]   ##x为起始引用，省略为0，y为末尾引用，省略为最大值，z为间隔，省略为1
+```
+```
+>>>A = np.arange(10, 19).reshape((3,3))
+A
+array([[10,11,12],
+       [13,14,15],
+       [16,17,18]])
+##对二维数组使用切分法
+A[0,:]
+array([10,11,12])
+A[:,0]
+array([10,13,16])
+
+##抽取一个子矩阵
+A[0:2, 0:2]
+array([[10,11],[13,14]])
+
+##非连续抽取
+A[[0,2],0:2]
+array([[10,11],[16,17])
+```
+3、数组迭代
+
+a、for结构迭代
+
+b、内置函数
+```
+np.apply_along_axis(foo, axis=0, arr=A)   ##axis = 0为列，axis=1为行
+```
+
+4、条件和布尔数组
+```
+A < 0.5
+array([[True, True, False, False]
+       [True, True, Fales, True],
+       [False, True, False, False],
+       [False, False, True, True]], dtype=bool)
+       
+A[A<0.5]   ##将返回所有小于0.5的数组成的数组
+```
+
+5、改变数组的形状
+```
+a.reshape()
+a.ravel()           ##恢复为1维
+a.transpose()       ##转置
+```
+
+#### 数组的操作
+1、连接数组
+```
+np.vstack((A, B))       ##垂直连接
+np.hstack((A,B))        ##横向连接
+
+np.column_stack((a,b,c))        ##类似垂直连接
+np.row_stack((a,b,c))           ##类似横向连接
+
+np.hsplit()             ##水平切分
+np.vsplit()             ##垂直切分
+
+np.split(A, [1,3], axis=1) ##axis 1：列 0：行
+```
