@@ -1,6 +1,6 @@
 ---
 layout: post
-title: C语言面试算法题(网络收集)
+title: C语言面试算法题(答案)
 category: 技术
 tags: C/C++面试题
 keywords: C/C++、算法
