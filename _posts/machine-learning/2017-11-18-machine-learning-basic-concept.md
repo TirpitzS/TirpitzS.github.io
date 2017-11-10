@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Machine Learning Concept
-category: Machine Learning
+category: 机器学习
 tags: ML
 keywords: ML、Concept
 description: 机器学习基本概念
